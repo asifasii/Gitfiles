@@ -12,7 +12,7 @@
     api-url="https://jsonplaceholder.typicode.com/users"
     :apiUrl="apiUrl"
     -->
-    <tableview :apiUrl="apiUrl" :sorting="name"/>
+    <tableview :apiUrl="apiUrl" :sortList="sortList" :tableHeaders="tableHeaders" :pagination="pagination"/>
   </div>
 </template>
 
@@ -27,7 +27,15 @@ export default {
  data() {
    return {
       apiUrl:"https://jsonplaceholder.typicode.com/users",
-      name:'name',
+      pagination:true,
+      tableHeaders:{
+        t1:'Name',t2:'E-mail',t3:'Company Name',t4:'City',t5:'Website'
+      },
+      sortList:[
+        ['name'],
+       
+      ]
+
    }
  }
   
