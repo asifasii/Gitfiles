@@ -1,29 +1,28 @@
 <template>
   <div class="w-70 p-5" v-if="datas">
-
-
-    <h1>API Table View</h1>
+    <h1>Table</h1>
     <div >
       <input class="form-control frm" type="text" v-model="search" placeholder="Search name.."/>
     </div>
     
-    <table  class="table table-striped">
+    <table class="table table-striped ">
       
       <tr>
         <th class="name-row" @click="sortData('name')">
-          {{tableHeaders.t1 }}  <i v-if="sortList=='name' || sortList[0]=='name'" class="fa fa-sort float-right" aria-hidden="true"></i>
+         {{tableHeaders[0].label}} <i v-if="sortList=='name'" class="slide-in-right
+ fa fa-sort float-right" aria-hidden="true"></i>
         </th>
         <th @click="sortData('email')">
-           {{tableHeaders.t2 }} <i v-if="sortList=='email' || sortList[0]=='name'" class="fa fa-sort float-right" aria-hidden="true"></i>
+            {{tableHeaders[1].label}} <i v-if="sortList=='email'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th @click="sortData('company')">
-           {{tableHeaders.t3 }} <i v-if="sortList=='company' || sortList[0]=='name'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[2].label }} <i v-if="sortList=='company'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th  @click="sortData('city')">
-           {{tableHeaders.t4 }} <i v-if="sortList=='city' || sortList[0]=='name'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[3].label }} <i v-if="sortList=='city'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th  @click="sortData('website')">
-           {{tableHeaders.t5 }} <i v-if="sortList=='website' || sortList[0]=='name'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[4].label }} <i v-if="sortList=='website'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
       </tr>
 
@@ -43,16 +42,11 @@
   <a href="" class="active">Page{{ current }}</a>
   <a @click="next()" v-if="paginated.length != 0" >&raquo;</a>
 </div>
-
-
-      
-  <!-- <b-pagination v-model="CurrentPage" :per-page="perPage"> -->
-      <!-- </b-pagination> -->
   </div>
 </template>
 <script>
 export default {
-  name: "tableview",
+  name: "configTable",
   props:{
         apiUrl: String,
         sortList: Array,
@@ -71,7 +65,6 @@ export default {
   },
   
   beforeMount() {
-    // debugger;
     this.getName();
   },
 
@@ -93,13 +86,6 @@ export default {
          this.order='ASC';
       }
        let prop='';
-      // console.log(this.sortList);
-     /* if(this.sortList=='name'){
-        prop=this.sortList;
-      }
-      else if(this.sortList=='email'){
-        prop=this.sortList
-      }*/
       for (let index = 0; index < this.sortList.length; index++) {
        
         if(this.sortList[index]=='name' && dataFromBtn=='name'){
@@ -127,17 +113,13 @@ export default {
         if (prop!='') {
           if(this.order =='ASC'){
           this.datas.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
-          this.order = 'DSC';
+          this.order = 'DESC';
         }
         else{
          this.datas.sort((a, b) => (a[prop] < b[prop] ? 1 : -1));
          this.order = 'ASC';
         }
         }
-        
-      
-      
-
     },
     prev() {
       this.current--;

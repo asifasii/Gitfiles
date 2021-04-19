@@ -12,8 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Paginate from 'vue-paginate'
 Vue.component('paginate', Paginate);
 
-
-
 import { NavbarPlugin } from 'bootstrap-vue'
 Vue.use(NavbarPlugin)
 Vue.config.productionTip = false

@@ -5,32 +5,31 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
-        
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> 
-    url : url,
-    api-url="https://jsonplaceholder.typicode.com/users"
-    :apiUrl="apiUrl"
-    -->
-    <tableview :apiUrl="apiUrl" :sortList="sortList" :tableHeaders="tableHeaders" :pagination="pagination"/>
+    <configTable :apiUrl="apiUrl" :sortList="sortList" :tableHeaders="tableHeaders" :pagination="pagination"/>
   </div>
 </template>
 
 <script>
-import tableview from "./components/table-view.vue";
+import configTable from "./components/configTable.vue";
+
 export default {
   name: "App",
   components: {
-    tableview
+    configTable
   },
 
  data() {
    return {
       apiUrl:"https://jsonplaceholder.typicode.com/users",
       pagination:true,
-      tableHeaders:{
-        t1:'Name',t2:'E-mail',t3:'Company Name',t4:'City',t5:'Website'
-      },
+      tableHeaders:[
+         {label:'Name',value:''},
+         {label:'E-mail',value:''},
+         {label:'Company Name',value:''},
+         {label:'City',value:''},
+         {label:'Website',value:''}
+      ],
+       
       sortList:[
         ['name'],
        
