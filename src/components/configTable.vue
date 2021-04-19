@@ -9,20 +9,19 @@
       
       <tr>
         <th class="name-row" @click="sortData('name')">
-         {{tableHeaders[0].label}} <i v-if="sortList=='name'" class="slide-in-right
- fa fa-sort float-right" aria-hidden="true"></i>
+         {{tableHeaders[0].label}} <i v-if="sortList=='name' || sortList[0]=='name'" class=" fa fa-sort float-right" aria-hidden="true"></i>
         </th>
         <th @click="sortData('email')">
-            {{tableHeaders[1].label}} <i v-if="sortList=='email'" class="fa fa-sort float-right" aria-hidden="true"></i>
+            {{tableHeaders[1].label}} <i v-if="sortList=='email'|| sortList[1]=='email'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th @click="sortData('company')">
-           {{tableHeaders[2].label }} <i v-if="sortList=='company'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[2].label }} <i v-if="sortList=='company'|| sortList[2]=='company'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th  @click="sortData('city')">
-           {{tableHeaders[3].label }} <i v-if="sortList=='city'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[3].label }} <i v-if="sortList=='city'|| sortList[3]=='city'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
         <th  @click="sortData('website')">
-           {{tableHeaders[4].label }} <i v-if="sortList=='website'" class="fa fa-sort float-right" aria-hidden="true"></i>
+           {{tableHeaders[4].label }} <i v-if="sortList=='website'|| sortList[4]=='website'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
       </tr>
 
