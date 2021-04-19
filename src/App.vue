@@ -8,7 +8,6 @@
     <configTable :apiUrl="apiUrl" :sortList="sortList" :tableHeaders="tableHeaders" :pagination="pagination"/>
   </div>
 </template>
-
 <script>
 import configTable from "./components/configTable.vue";
 
@@ -17,7 +16,6 @@ export default {
   components: {
     configTable
   },
-
  data() {
    return {
       apiUrl:"https://jsonplaceholder.typicode.com/users",
@@ -29,18 +27,15 @@ export default {
          {label:'City',value:''},
          {label:'Website',value:''}
       ],
-       
       sortList:[
         ['name'],
-       
+        ['email'],
+        ['company']
       ]
-
    }
  }
-  
 };
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

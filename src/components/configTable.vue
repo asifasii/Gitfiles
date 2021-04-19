@@ -4,9 +4,7 @@
     <div >
       <input class="form-control frm" type="text" v-model="search" placeholder="Search name.."/>
     </div>
-    
-    <table class="table table-striped ">
-      
+    <table class="table table-striped "> 
       <tr>
         <th class="name-row" @click="sortData('name')">
          {{tableHeaders[0].label}} <i v-if="sortList=='name' || sortList[0]=='name'" class=" fa fa-sort float-right" aria-hidden="true"></i>
@@ -24,18 +22,14 @@
            {{tableHeaders[4].label }} <i v-if="sortList=='website'|| sortList[4]=='website'" class="fa fa-sort float-right" aria-hidden="true"></i>
            </th>
       </tr>
-
       <tr v-for="(data, index) in paginated" :key="index">
         <td>{{ data.name }}</td>
-        <td>
-          <a href="">{{ data.email }}</a>
-        </td>
+        <td> <a href="">{{ data.email }}</a> </td>
         <td>{{ data.company.name }}</td>
         <td>{{ data.address.city }}</td>
         <td>{{ data.website }}</td>
       </tr>
     </table>
-
 <div class="pagination" v-if="pagination==true">
   <a v-if="paginated.length != 0" @click="prev()">&laquo;</a>
   <a href="" class="active">Page{{ current }}</a>
@@ -62,13 +56,9 @@ export default {
       pageSize:5,
     };
   },
-  
   beforeMount() {
     this.getName();
   },
-
-  
-
   methods: {
     async getName() {
       try {
@@ -78,7 +68,6 @@ export default {
       } catch (error) {
         error
       }
-      
     },
     sortData(dataFromBtn) {
       if(this.order==''){
@@ -89,26 +78,28 @@ export default {
        
         if(this.sortList[index]=='name' && dataFromBtn=='name'){
           prop='name';
-          console.log(prop);
+          break;
         }
         else if(this.sortList[index]=='email' && dataFromBtn=='email'){
           prop='email';
+          break;
         }
         else if(this.sortList[index]=='company' && dataFromBtn=='company'){
-          console.log(this.datas[0]['company']['name']);
           prop='company[name]';
+          break;
         }
         else if(this.sortList[index]=='city' && dataFromBtn=='city'){
           prop='city';
+          break;
         }
         else if(this.sortList[index]=='website' && dataFromBtn=='website'){
           prop='website';
+          break;
         }
         else{
           prop ='';
         }
       }
-        console.log(this.order)
         if (prop!='') {
           if(this.order =='ASC'){
           this.datas.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
@@ -146,10 +137,8 @@ export default {
       else{
         return this.filteredList;
       }
-      
     },
   },
-  
 };
 </script>
 <style>
@@ -177,7 +166,6 @@ th {
 .pagination {
   display: inline-block;
 }
-
 .pagination a {
   color: black;
   float: left;
@@ -185,12 +173,10 @@ th {
   text-decoration: none;
   transition: background-color .3s;
 }
-
 .pagination a.active {
   background-color: #4CAF50;
   color: white;
 }
-
 .pagination a:hover:not(.active) {
   background-color: #ddd;
   cursor: pointer;
